@@ -1,0 +1,14 @@
+target/
+dist/
+dados/
+*.db
+*.db-shm
+*.db-wal
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
+
