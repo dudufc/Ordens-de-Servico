@@ -2,7 +2,7 @@
 
 Aplicação desktop para organizar atendimentos técnicos da **CF Tecnologia**, desenvolvida como trabalho final de Linguagem de Programação III, do curso de Ciência da Computação (IFRS Campus Ibirubá).
 
-> **Projeto em desenvolvimento.** Esta primeira etapa contém a estrutura JavaFX/FXML, o modelo de dados e a camada inicial de persistência. Os cadastros e as ordens ainda não estão disponíveis na interface.
+> **Projeto em desenvolvimento.** A estrutura inicial e o CRUD de clientes estão disponíveis. Equipamentos e ordens serão implementados nas próximas etapas.
 
 ## Problema e objetivo
 
@@ -15,7 +15,7 @@ Pequenas assistências técnicas precisam registrar quais equipamentos pertencem
 
 ## Funcionalidades planejadas
 
-- [ ] Cadastro, pesquisa, edição e exclusão de clientes.
+- [x] Cadastro, pesquisa, edição e exclusão de clientes.
 - [ ] Cadastro, pesquisa, edição e exclusão de equipamentos vinculados aos clientes.
 - [ ] Abertura, listagem e acompanhamento de ordens de serviço.
 - [ ] Validação de formulários e confirmação antes da exclusão.
@@ -81,7 +81,7 @@ Datas sugeridas para dividir o trabalho de forma real e progressiva. Cada commit
 | Data sugerida | Etapa | Commit sugerido |
 | --- | --- | --- |
 | 23/11 | Estrutura Maven, tela inicial, três entidades, JPA e testes iniciais | `feat: iniciar projeto e modelar entidades JPA` |
-| 25/11 | CRUD completo de clientes | `feat: implementar cadastro de clientes` |
+| 24/11 | CRUD completo de clientes | `feat: implementar cadastro de clientes` |
 | 27/11 | CRUD completo de equipamentos e relacionamento | `feat: implementar cadastro de equipamentos` |
 | 30/11 | Fluxo completo de ordens de serviço | `feat: implementar ordens de servico` |
 | 02/12 | Validações, buscas, ObservableList, bindings e Streams | `feat: adicionar filtros e validacoes` |

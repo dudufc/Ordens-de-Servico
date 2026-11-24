@@ -32,11 +32,11 @@
         </VBox>
     </left>
     <center>
-        <VBox spacing="22" styleClass="content">
+        <VBox fx:id="painel" spacing="22" styleClass="content">
             <Label text="PAINEL" styleClass="section-caption" />
             <Label fx:id="tituloPagina" text="Visão geral" styleClass="page-title" />
             <Label fx:id="descricaoPagina" text="Bem-vindo!" wrapText="true" styleClass="page-description" />
-            <VBox spacing="12" styleClass="info-card">
+            <VBox fx:id="resumo" spacing="12" styleClass="info-card">
                 <Label text="Andamento do projeto" styleClass="card-heading" />
                 <Label fx:id="etapaPagina" text="Estrutura inicial" wrapText="true" styleClass="card-body" />
                 <Label text="Os formulários e a listagem de dados serão adicionados nos próximos commits."

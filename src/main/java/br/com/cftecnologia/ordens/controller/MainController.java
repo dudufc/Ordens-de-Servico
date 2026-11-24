@@ -1,9 +1,15 @@
 package br.com.cftecnologia.ordens.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Alert;
+import java.io.IOException;
 import javafx.scene.control.Label;
 
 public class MainController {
+    @FXML private VBox painel;
+    @FXML private VBox resumo;
 
     @FXML
     private Label tituloPagina;
@@ -27,8 +33,16 @@ public class MainController {
 
     @FXML
     private void mostrarClientes() {
-        exibir("Clientes", "Aqui serão feitos o cadastro, a busca, a edição e a exclusão de clientes.",
-                "Próxima etapa: CRUD de clientes com TableView e formulário.");
+        try {
+            var tela = FXMLLoader.<VBox>load(getClass().getResource("/view/clientes.fxml"));
+            exibir("Clientes", "Gerencie os dados dos clientes.", "");
+            resumo.setVisible(false);
+            resumo.setManaged(false);
+            painel.getChildren().add(tela);
+            VBox.setVgrow(tela, javafx.scene.layout.Priority.ALWAYS);
+        } catch (IOException | RuntimeException e) {
+            new Alert(Alert.AlertType.ERROR, "Não foi possível abrir o cadastro de clientes.").showAndWait();
+        }
     }
 
     @FXML
@@ -44,6 +58,9 @@ public class MainController {
     }
 
     private void exibir(String titulo, String descricao, String etapa) {
+        painel.getChildren().removeIf(n -> n.getId() != null && n.getId().equals("cadastroClientes"));
+        resumo.setVisible(true);
+        resumo.setManaged(true);
         tituloPagina.setText(titulo);
         descricaoPagina.setText(descricao);
         etapaPagina.setText(etapa);

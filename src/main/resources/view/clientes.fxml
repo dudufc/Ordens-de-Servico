@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cftecnologia.ordens.controller.ClienteController" id="cadastroClientes" spacing="12">
+    <VBox spacing="8" styleClass="info-card">
+        <Label text="Dados do cliente" styleClass="card-heading"/>
+        <Label text="Nome *"/><TextField fx:id="nome" promptText="Nome completo"/>
+        <HBox spacing="12">
+            <VBox spacing="4" HBox.hgrow="ALWAYS"><Label text="E-mail"/><TextField fx:id="email" promptText="cliente@exemplo.com"/></VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS"><Label text="Telefone"/><TextField fx:id="telefone" promptText="(00) 00000-0000"/></VBox>
+        </HBox>
+        <HBox spacing="8"><Button text="Novo / Limpar" onAction="#limpar"/><Button text="Salvar" onAction="#salvar"/><Button fx:id="excluir" text="Excluir" onAction="#excluir"/></HBox>
+    </VBox>
+    <HBox spacing="12" alignment="CENTER_LEFT"><TextField fx:id="pesquisa" promptText="Pesquisar por nome" HBox.hgrow="ALWAYS"/><Label fx:id="quantidade"/></HBox>
+    <TableView fx:id="tabela" VBox.vgrow="ALWAYS" prefHeight="230">
+        <columns><TableColumn fx:id="colunaNome" text="Nome" prefWidth="230"/><TableColumn fx:id="colunaEmail" text="E-mail" prefWidth="250"/><TableColumn fx:id="colunaTelefone" text="Telefone" prefWidth="150"/></columns>
+    </TableView>
+</VBox>
