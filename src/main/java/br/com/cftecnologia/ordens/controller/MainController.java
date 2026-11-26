@@ -22,6 +22,7 @@ public class MainController {
 
     @FXML
     private void initialize() {
+        if (!Sessao.admin()) throw new IllegalStateException("Acesso negado");
         mostrarInicio();
     }
 
@@ -64,6 +65,8 @@ public class MainController {
         exibir("Ordens de serviço", "As ordens registrarão problema, equipamento, status e valor estimado.",
                 "Cadastro de ordens de serviço em breve.");
     }
+
+    @FXML private void sair() { Sessao.sair(); LoginController.abrir(painel, "/view/login.fxml"); }
 
     private void exibir(String titulo, String descricao, String etapa) {
         painel.getChildren().removeIf(n -> n.getId() != null && (n.getId().equals("cadastroClientes") || n.getId().equals("cadastroEquipamentos")));

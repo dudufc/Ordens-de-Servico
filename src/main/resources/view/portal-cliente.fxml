@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cftecnologia.ordens.controller.PortalClienteController" fx:id="painel" spacing="20" styleClass="content"><Label text="Área do cliente" styleClass="page-title"/><Label fx:id="nome" styleClass="page-description"/><Label text="Seu acesso está ativo. As solicitações serão disponibilizadas na próxima etapa." wrapText="true"/><Button text="Sair" onAction="#sair"/></VBox>

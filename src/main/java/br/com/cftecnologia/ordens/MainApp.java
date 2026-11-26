@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 public class MainApp extends Application {
  @Override public void start(Stage stage) throws java.io.IOException {
-  Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/main.fxml")), 1100, 700);
+  Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/login.fxml")), 1100, 700);
   var css = getClass().getResource("/styles/app.css");
   if(css != null) scene.getStylesheets().add(css.toExternalForm());
   stage.setTitle("Ordens de Serviço"); stage.setMinWidth(860); stage.setMinHeight(560); stage.setScene(scene); stage.show();
