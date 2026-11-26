@@ -1,53 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.com.cftecnologia.ordens.controller.MainController"
-            prefWidth="1100" prefHeight="700" styleClass="root-app">
-    <top>
-        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="topbar">
-            <Label text="CF" styleClass="brand-mark" />
-            <VBox spacing="1">
-                <Label text="CF Ordens de Serviço" styleClass="brand-title" />
-                <Label text="Gestão de atendimentos técnicos" styleClass="brand-subtitle" />
-            </VBox>
-        </HBox>
-    </top>
-    <left>
-        <VBox spacing="8" prefWidth="230" styleClass="sidebar">
-            <Label text="MENU PRINCIPAL" styleClass="section-caption" />
-            <Button text="Visão geral" onAction="#mostrarInicio" maxWidth="Infinity" styleClass="nav-button" />
-            <Button text="Clientes" onAction="#mostrarClientes" maxWidth="Infinity" styleClass="nav-button" />
-            <Button text="Equipamentos" onAction="#mostrarEquipamentos" maxWidth="Infinity" styleClass="nav-button" />
-            <Button text="Ordens de serviço" onAction="#mostrarOrdens" maxWidth="Infinity" styleClass="nav-button" />
-            <Region VBox.vgrow="ALWAYS" />
-            <Label text="Versão de desenvolvimento" wrapText="true" styleClass="sidebar-footer" />
-        </VBox>
-    </left>
-    <center>
-        <VBox fx:id="painel" spacing="22" styleClass="content">
-            <Label text="PAINEL" styleClass="section-caption" />
-            <Label fx:id="tituloPagina" text="Visão geral" styleClass="page-title" />
-            <Label fx:id="descricaoPagina" text="Bem-vindo!" wrapText="true" styleClass="page-description" />
-            <VBox fx:id="resumo" spacing="12" styleClass="info-card">
-                <Label text="Andamento do projeto" styleClass="card-heading" />
-                <Label fx:id="etapaPagina" text="Estrutura inicial" wrapText="true" styleClass="card-body" />
-                <Label text="Os formulários e a listagem de dados serão adicionados nos próximos commits."
-                       wrapText="true" styleClass="muted-text" />
-            </VBox>
-        </VBox>
-    </center>
-    <bottom>
-        <HBox alignment="CENTER_RIGHT" styleClass="statusbar">
-            <Label text="IFRS | Linguagem de Programação III" styleClass="muted-text" />
-        </HBox>
-    </bottom>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cftecnologia.ordens.controller.MainController" prefWidth="1100" prefHeight="700" styleClass="root-app">
+ <top><HBox alignment="CENTER_LEFT" spacing="12" styleClass="topbar"><VBox spacing="1"><Label text="Ordens de Serviço" styleClass="brand-title"/><Label text="Gestão de atendimentos técnicos" styleClass="brand-subtitle"/></VBox></HBox></top>
+ <left><VBox spacing="8" prefWidth="230" styleClass="sidebar"><Label text="MENU PRINCIPAL" styleClass="section-caption"/><Button text="Visão geral" onAction="#mostrarInicio" maxWidth="Infinity" styleClass="nav-button"/><Button text="Clientes" onAction="#mostrarClientes" maxWidth="Infinity" styleClass="nav-button"/><Button text="Equipamentos" onAction="#mostrarEquipamentos" maxWidth="Infinity" styleClass="nav-button"/><Button text="Ordens de serviço" onAction="#mostrarOrdens" maxWidth="Infinity" styleClass="nav-button"/></VBox></left>
+ <center><VBox fx:id="painel" spacing="22" styleClass="content"><Label text="PAINEL" styleClass="section-caption"/><Label fx:id="tituloPagina" styleClass="page-title"/><Label fx:id="descricaoPagina" wrapText="true" styleClass="page-description"/><VBox fx:id="resumo" spacing="12" styleClass="info-card"><Label text="Informações" styleClass="card-heading"/><Label fx:id="etapaPagina" wrapText="true" styleClass="card-body"/></VBox></VBox></center>
 </BorderPane>
-

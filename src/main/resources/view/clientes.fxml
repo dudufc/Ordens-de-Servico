@@ -9,7 +9,7 @@
             <VBox spacing="4" HBox.hgrow="ALWAYS"><Label text="E-mail"/><TextField fx:id="email" promptText="cliente@exemplo.com"/></VBox>
             <VBox spacing="4" HBox.hgrow="ALWAYS"><Label text="Telefone"/><TextField fx:id="telefone" promptText="(00) 00000-0000"/></VBox>
         </HBox>
-        <HBox spacing="8"><Button text="Novo / Limpar" onAction="#limpar"/><Button text="Salvar" onAction="#salvar"/><Button fx:id="excluir" text="Excluir" onAction="#excluir"/></HBox>
+        <HBox spacing="8"><Button text="Salvar" onAction="#salvar"/><Button text="Novo / Limpar" onAction="#limpar"/><Button fx:id="excluir" text="Excluir" onAction="#excluir"/></HBox>
     </VBox>
     <HBox spacing="12" alignment="CENTER_LEFT"><TextField fx:id="pesquisa" promptText="Pesquisar por nome" HBox.hgrow="ALWAYS"/><Label fx:id="quantidade"/></HBox>
     <TableView fx:id="tabela" VBox.vgrow="ALWAYS" prefHeight="230">

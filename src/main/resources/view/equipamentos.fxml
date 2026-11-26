@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cftecnologia.ordens.controller.EquipamentoController" id="cadastroEquipamentos" spacing="12">
+ <VBox spacing="8" styleClass="info-card">
+  <Label text="Dados do equipamento" styleClass="card-heading"/>
+  <Label text="Cliente *"/><ComboBox fx:id="cliente" promptText="Selecione um cliente" maxWidth="Infinity"/>
+  <HBox spacing="12"><VBox HBox.hgrow="ALWAYS"><Label text="Tipo *"/><TextField fx:id="tipo" promptText="Notebook, computador..."/></VBox><VBox HBox.hgrow="ALWAYS"><Label text="Marca"/><TextField fx:id="marca"/></VBox></HBox>
+  <HBox spacing="12"><VBox HBox.hgrow="ALWAYS"><Label text="Modelo"/><TextField fx:id="modelo"/></VBox><VBox HBox.hgrow="ALWAYS"><Label text="Número de série"/><TextField fx:id="serie"/></VBox></HBox>
+  <HBox spacing="8"><Button text="Salvar" onAction="#salvar"/><Button text="Novo / Limpar" onAction="#limpar"/><Button fx:id="excluir" text="Excluir" onAction="#excluir"/></HBox>
+ </VBox>
+ <HBox spacing="12" alignment="CENTER_LEFT"><TextField fx:id="pesquisa" promptText="Pesquisar equipamento ou cliente" HBox.hgrow="ALWAYS"/><Label fx:id="quantidade"/></HBox>
+ <TableView fx:id="tabela" VBox.vgrow="ALWAYS" prefHeight="230"><columns>
+ <TableColumn fx:id="colunaTipo" text="Tipo" prefWidth="110"/><TableColumn fx:id="colunaMarca" text="Marca" prefWidth="100"/><TableColumn fx:id="colunaModelo" text="Modelo" prefWidth="120"/><TableColumn fx:id="colunaSerie" text="Série" prefWidth="120"/><TableColumn fx:id="colunaCliente" text="Cliente" prefWidth="180"/>
+ </columns></TableView>
+</VBox>

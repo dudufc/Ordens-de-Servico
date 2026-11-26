@@ -27,8 +27,8 @@ public class MainController {
 
     @FXML
     private void mostrarInicio() {
-        exibir("Visão geral", "Bem-vindo ao sistema de ordens de serviço da CF Tecnologia.",
-                "Etapa 1: estrutura inicial, entidades e persistência JPA.");
+        exibir("Visão geral", "Bem-vindo ao sistema de ordens de serviço.",
+                "Use o menu para gerenciar clientes e equipamentos.");
     }
 
     @FXML
@@ -47,18 +47,26 @@ public class MainController {
 
     @FXML
     private void mostrarEquipamentos() {
-        exibir("Equipamentos", "Cada equipamento ficará vinculado ao cliente responsável.",
-                "Etapa planejada: CRUD de equipamentos com seleção de cliente.");
+        try {
+            var tela = FXMLLoader.<VBox>load(getClass().getResource("/view/equipamentos.fxml"));
+            exibir("Equipamentos", "Gerencie os equipamentos dos clientes.", "");
+            resumo.setVisible(false);
+            resumo.setManaged(false);
+            painel.getChildren().add(tela);
+            VBox.setVgrow(tela, javafx.scene.layout.Priority.ALWAYS);
+        } catch (IOException | RuntimeException e) {
+            new Alert(Alert.AlertType.ERROR, "Não foi possível abrir o cadastro de equipamentos.").showAndWait();
+        }
     }
 
     @FXML
     private void mostrarOrdens() {
         exibir("Ordens de serviço", "As ordens registrarão problema, equipamento, status e valor estimado.",
-                "Etapa planejada: fluxo de abertura e acompanhamento de ordens.");
+                "Cadastro de ordens de serviço em breve.");
     }
 
     private void exibir(String titulo, String descricao, String etapa) {
-        painel.getChildren().removeIf(n -> n.getId() != null && n.getId().equals("cadastroClientes"));
+        painel.getChildren().removeIf(n -> n.getId() != null && (n.getId().equals("cadastroClientes") || n.getId().equals("cadastroEquipamentos")));
         resumo.setVisible(true);
         resumo.setManaged(true);
         tituloPagina.setText(titulo);

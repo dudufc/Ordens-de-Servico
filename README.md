@@ -1,8 +1,8 @@
-# CF Ordens de Serviço
+# Ordens de Serviço
 
-Aplicação desktop para organizar atendimentos técnicos da **CF Tecnologia**, desenvolvida como trabalho final de Linguagem de Programação III, do curso de Ciência da Computação (IFRS Campus Ibirubá).
+Aplicação desktop para organizar atendimentos técnicos, desenvolvida como trabalho final de Linguagem de Programação III, do curso de Ciência da Computação (IFRS Campus Ibirubá).
 
-> **Projeto em desenvolvimento.** A estrutura inicial e o CRUD de clientes estão disponíveis. Equipamentos e ordens serão implementados nas próximas etapas.
+> **Projeto em desenvolvimento.** A estrutura inicial e os CRUDs de clientes e equipamentos estão disponíveis. Ordens serão implementadas na próxima etapa.
 
 ## Problema e objetivo
 
@@ -16,7 +16,7 @@ Pequenas assistências técnicas precisam registrar quais equipamentos pertencem
 ## Funcionalidades planejadas
 
 - [x] Cadastro, pesquisa, edição e exclusão de clientes.
-- [ ] Cadastro, pesquisa, edição e exclusão de equipamentos vinculados aos clientes.
+- [x] Cadastro, pesquisa, edição e exclusão de equipamentos vinculados aos clientes.
 - [ ] Abertura, listagem e acompanhamento de ordens de serviço.
 - [ ] Validação de formulários e confirmação antes da exclusão.
 - [ ] Filtros por cliente e status, totalizadores e indicadores de atendimento.
