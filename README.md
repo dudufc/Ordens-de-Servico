@@ -104,7 +104,7 @@ A comunicação com o banco de dados é feita utilizando JPA e Hibernate. As ope
 
 ### Painel administrativo
 
-![Painel administrativo](docs/imagens/painel-admin.png)
+![Painel administrativo](docs/imagens/visao-geral.png)
 
 ### Clientes
 
