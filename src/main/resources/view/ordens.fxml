@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cftecnologia.ordens.controller.OrdemController" id="cadastroOrdens" spacing="8" minHeight="0">
+<ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" VBox.vgrow="ALWAYS" minHeight="0"><content><VBox spacing="8">
+<FlowPane hgap="8" vgap="6"><Button text="Abrir chamado" styleClass="ordem-primary" onAction="#abrirChamado"/><Button fx:id="editar" text="Visualizar" onAction="#editarChamado"/><Button fx:id="iniciar" text="Iniciar" onAction="#iniciarChamado"/><Button fx:id="finalizar" text="Finalizar" styleClass="ordem-success" onAction="#finalizarChamado"/><Button fx:id="cancelar" text="Cancelar" styleClass="danger" onAction="#cancelarChamado"/><Button fx:id="excluir" text="Excluir" styleClass="danger" onAction="#excluir"/></FlowPane>
+<VBox fx:id="formulario" spacing="5" visible="false" managed="false"><Label text="Equipamento e cliente *"/><ComboBox fx:id="equipamento" maxWidth="Infinity" promptText="Selecione o equipamento"/>
+<Label text="Problema *"/><TextArea fx:id="problema" promptText="Descreva o problema" prefRowCount="2" prefHeight="100" minHeight="80" wrapText="true"/>
+<VBox fx:id="dadosTecnicos" spacing="8"><Label text="Observações técnicas"/><TextArea fx:id="observacoes" prefRowCount="2" prefHeight="100" minHeight="80" wrapText="true"/>
+<HBox spacing="12"><VBox spacing="4"><Label text="Status"/><ComboBox fx:id="status"/></VBox></HBox></VBox>
+<HBox spacing="8"><Button fx:id="salvar" text="Salvar" styleClass="primary" onAction="#salvar"/></HBox>
+</VBox>
+<TextField fx:id="pesquisa" promptText="Pesquisar ordens"/>
+<TableView fx:id="tabela" VBox.vgrow="ALWAYS" prefHeight="300" minHeight="250"><columns><TableColumn fx:id="numero" text="Nº" prefWidth="45"/><TableColumn fx:id="cliente" text="Cliente" prefWidth="130"/><TableColumn fx:id="item" text="Equipamento" prefWidth="240"/><TableColumn fx:id="situacao" text="Status" prefWidth="120"/><TableColumn fx:id="abertura" text="Abertura" prefWidth="135"/></columns></TableView>
+</VBox></content></ScrollPane></VBox>

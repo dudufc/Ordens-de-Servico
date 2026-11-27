@@ -7,7 +7,7 @@
   <Label text="Cliente *"/><ComboBox fx:id="cliente" promptText="Selecione um cliente" maxWidth="Infinity"/>
   <HBox spacing="12"><VBox HBox.hgrow="ALWAYS"><Label text="Tipo *"/><TextField fx:id="tipo" promptText="Notebook, computador..."/></VBox><VBox HBox.hgrow="ALWAYS"><Label text="Marca"/><TextField fx:id="marca"/></VBox></HBox>
   <HBox spacing="12"><VBox HBox.hgrow="ALWAYS"><Label text="Modelo"/><TextField fx:id="modelo"/></VBox><VBox HBox.hgrow="ALWAYS"><Label text="Número de série"/><TextField fx:id="serie"/></VBox></HBox>
-  <HBox spacing="8"><Button text="Salvar" onAction="#salvar"/><Button text="Novo / Limpar" onAction="#limpar"/><Button fx:id="excluir" text="Excluir" onAction="#excluir"/></HBox>
+  <HBox spacing="8"><Button text="Salvar" styleClass="primary" onAction="#salvar"/><Button text="Novo / Limpar" onAction="#limpar"/><Button fx:id="excluir" text="Excluir" styleClass="danger" onAction="#excluir"/></HBox>
  </VBox>
  <HBox spacing="12" alignment="CENTER_LEFT"><TextField fx:id="pesquisa" promptText="Pesquisar equipamento ou cliente" HBox.hgrow="ALWAYS"/><Label fx:id="quantidade"/></HBox>
  <TableView fx:id="tabela" VBox.vgrow="ALWAYS" prefHeight="230"><columns>

@@ -67,10 +67,11 @@ public class ClienteController {
             Cliente cliente = idSelecionado == null ? new Cliente(n, e, t) : repository.buscarPorId(idSelecionado).orElseThrow();
             cliente.setNome(n); cliente.setEmail(e); cliente.setTelefone(t);
             repository.salvar(cliente);
-        } catch (RuntimeException ex) { erro("Não foi possível salvar o cliente."); return; }
+        } catch (RuntimeException ex) { erro(ex.getCause() instanceof IllegalArgumentException ? ex.getCause().getMessage() : "Não foi possível salvar o cliente."); return; }
         recarregar("Cliente salvo com sucesso.");
     }
 
+    @FXML private void redefinirSenha() { if (Sessao.admin() && idSelecionado != null) SenhasDialog.redefinir(idSelecionado); else erro("Selecione um cliente."); }
     @FXML private void excluir() {
         Cliente cliente = tabela.getSelectionModel().getSelectedItem();
         if (cliente == null) return;
@@ -78,7 +79,7 @@ public class ClienteController {
         if (confirmacao.showAndWait().orElse(ButtonType.NO) != ButtonType.YES) return;
         try {
             if (!repository.excluir(cliente.getId())) { erro("Cliente não encontrado."); return; }
-        } catch (RuntimeException ex) { erro("Não foi possível excluir. Verifique se existem equipamentos vinculados."); return; }
+        } catch (RuntimeException ex) { erro("Não foi possível excluir. Verifique se existem equipamentos ou conta de acesso vinculados."); return; }
         recarregar("Cliente excluído com sucesso.");
     }
 

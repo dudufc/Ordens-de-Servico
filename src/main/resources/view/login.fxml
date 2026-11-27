@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cftecnologia.ordens.controller.LoginController" fx:id="painel" alignment="CENTER" spacing="16" styleClass="root-app">
- <VBox maxWidth="380" spacing="12" styleClass="info-card"><Label text="Ordens de Serviço" styleClass="page-title"/><Label fx:id="aviso" wrapText="true"/><Label text="E-mail"/><TextField fx:id="email"/><Label text="Senha"/><PasswordField fx:id="senha" onAction="#entrar"/><Button text="Entrar" onAction="#entrar" maxWidth="Infinity"/><Button fx:id="cadastro" onAction="#cadastrar" maxWidth="Infinity"/></VBox>
+ <VBox maxWidth="440" spacing="14" styleClass="login-card"><HBox alignment="CENTER_LEFT" spacing="12"><ImageView fitHeight="48" preserveRatio="true"><image><Image url="@../images/ifrs.png"/></image></ImageView><Label text="IFRS – Campus Ibirubá"/></HBox><Label text="CENTRAL DE ATENDIMENTO" styleClass="section-caption"/><Label text="Ordens de Serviço" styleClass="page-title"/><Label fx:id="aviso" wrapText="true"/><Label text="E-mail"/><TextField fx:id="email" promptText="seu@email.com"/><Label text="Senha"/><PasswordField fx:id="senha" promptText="Sua senha" onAction="#entrar"/><Button text="Entrar" styleClass="primary" onAction="#entrar" maxWidth="Infinity"/><Button fx:id="cadastro" onAction="#cadastrar" maxWidth="Infinity"/></VBox>
 </VBox>

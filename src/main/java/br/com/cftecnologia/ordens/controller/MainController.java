@@ -62,14 +62,19 @@ public class MainController {
 
     @FXML
     private void mostrarOrdens() {
-        exibir("Ordens de serviço", "As ordens registrarão problema, equipamento, status e valor estimado.",
-                "Cadastro de ordens de serviço em breve.");
+        try {
+            var tela = FXMLLoader.<VBox>load(getClass().getResource("/view/ordens.fxml"));
+            exibir("Ordens de serviço", "Gerencie os atendimentos.", "");
+            resumo.setVisible(false); resumo.setManaged(false);
+            painel.getChildren().add(tela); VBox.setVgrow(tela, javafx.scene.layout.Priority.ALWAYS);
+        } catch (IOException | RuntimeException e) { e.printStackTrace(); new Alert(Alert.AlertType.ERROR, "Não foi possível abrir as ordens.").showAndWait(); }
     }
 
+    @FXML private void trocarSenha() { SenhasDialog.alterar(); }
     @FXML private void sair() { Sessao.sair(); LoginController.abrir(painel, "/view/login.fxml"); }
 
     private void exibir(String titulo, String descricao, String etapa) {
-        painel.getChildren().removeIf(n -> n.getId() != null && (n.getId().equals("cadastroClientes") || n.getId().equals("cadastroEquipamentos")));
+        painel.getChildren().removeIf(n -> n.getId() != null && (n.getId().equals("cadastroClientes") || n.getId().equals("cadastroEquipamentos") || n.getId().equals("cadastroOrdens")));
         resumo.setVisible(true);
         resumo.setManaged(true);
         tituloPagina.setText(titulo);
@@ -77,4 +82,3 @@ public class MainController {
         etapaPagina.setText(etapa);
     }
 }
-

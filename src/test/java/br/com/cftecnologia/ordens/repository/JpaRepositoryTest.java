@@ -57,6 +57,25 @@ class JpaRepositoryTest {
         }
     }
 
+    @Test
+    void deveBloquearExclusaoComVinculos() {
+        try (EntityManagerFactory factory = criarBancoTeste()) {
+            var clientes = new JpaRepository<>(factory, Cliente.class);
+            var equipamentos = new JpaRepository<>(factory, Equipamento.class);
+            var ordens = new JpaRepository<>(factory, OrdemServico.class);
+            var usuarios = new JpaRepository<>(factory, br.com.cftecnologia.ordens.model.Usuario.class);
+            var c = clientes.salvar(new Cliente("Teste", "teste@example.com", ""));
+            var e = equipamentos.salvar(new Equipamento("PC", "", "", "", c));
+            assertThrows(RepositoryException.class, () -> clientes.excluir(c.getId()));
+            var o = ordens.salvar(new OrdemServico(e, "Teste", BigDecimal.ZERO));
+            assertThrows(RepositoryException.class, () -> equipamentos.excluir(e.getId()));
+            assertTrue(ordens.excluir(o.getId()));
+            assertTrue(equipamentos.excluir(e.getId()));
+            usuarios.salvar(new br.com.cftecnologia.ordens.model.Usuario("teste@example.com", "hash-teste", "CLIENTE", c));
+            assertThrows(RepositoryException.class, () -> clientes.excluir(c.getId()));
+        }
+    }
+
     private EntityManagerFactory criarBancoTeste() {
         String url = "jdbc:sqlite:" + pastaTemporaria.resolve("teste.db").toAbsolutePath();
         return Persistence.createEntityManagerFactory("cfServicePU", Map.of(

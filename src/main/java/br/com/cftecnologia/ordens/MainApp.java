@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 public class MainApp extends Application {
  @Override public void start(Stage stage) throws java.io.IOException {
+  if (getParameters().getRaw().contains("--demo")) {
+   br.com.cftecnologia.ordens.repository.DadosDemo.inserir();
+  }
   Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/login.fxml")), 1100, 700);
   var css = getClass().getResource("/styles/app.css");
   if(css != null) scene.getStylesheets().add(css.toExternalForm());

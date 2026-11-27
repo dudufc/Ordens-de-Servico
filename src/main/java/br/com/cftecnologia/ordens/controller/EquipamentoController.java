@@ -21,8 +21,15 @@ public class EquipamentoController {
     private JpaRepository<Equipamento> repo;
     private JpaRepository<Cliente> clientes;
     private Long selecionado;
+    private boolean admin;
+    private Long clienteId;
+    private boolean permitido(Equipamento e) { return admin || Objects.equals(clienteId, e.getCliente().getId()); }
+    private Cliente clienteAtual() { return admin ? null : clientes.buscarPorId(clienteId).orElseThrow(); }
 
     @FXML private void initialize() {
+        if (Sessao.usuario() == null) throw new IllegalStateException("Acesso negado");
+        admin = Sessao.admin();
+        if (!admin) { clienteId = Objects.requireNonNull(Sessao.usuario().getCliente()).getId(); cliente.setDisable(true); }
         colunaTipo.setCellValueFactory(c -> new ReadOnlyStringWrapper(c.getValue().getTipo()));
         colunaMarca.setCellValueFactory(c -> new ReadOnlyStringWrapper(c.getValue().getMarca()));
         colunaModelo.setCellValueFactory(c -> new ReadOnlyStringWrapper(c.getValue().getModelo()));
@@ -40,34 +47,36 @@ public class EquipamentoController {
             marca.setText(e == null ? "" : texto(e.getMarca()));
             modelo.setText(e == null ? "" : texto(e.getModelo()));
             serie.setText(e == null ? "" : texto(e.getNumeroSerie()));
-            cliente.setValue(e == null ? null : cliente.getItems().stream().filter(c -> Objects.equals(c.getId(), e.getCliente().getId())).findFirst().orElse(null));
+            cliente.setValue(e == null ? clienteAtual() : cliente.getItems().stream().filter(c -> Objects.equals(c.getId(), e.getCliente().getId())).findFirst().orElse(null));
         });
         try { repo = new JpaRepository<>(Equipamento.class); clientes = new JpaRepository<>(Cliente.class); atualizar(); }
-        catch (RuntimeException e) { erro("Não foi possível carregar os equipamentos."); }
+        catch (RuntimeException e) { e.printStackTrace(); erro("Não foi possível carregar os equipamentos."); }
     }
     private static String texto(String s) { return s == null ? "" : s; }
     private void atualizar() {
-        cliente.getItems().setAll(clientes.listarTodos().stream().sorted(Comparator.comparing(Cliente::getNome, String.CASE_INSENSITIVE_ORDER)).toList());
-        equipamentos.setAll(repo.listarTodos().stream().sorted(Comparator.comparing(Equipamento::getTipo, String.CASE_INSENSITIVE_ORDER)).toList());
+        cliente.getItems().setAll(clientes.listarTodos().stream().filter(c -> admin || Objects.equals(clienteId,c.getId())).sorted(Comparator.comparing(Cliente::getNome, String.CASE_INSENSITIVE_ORDER)).toList());
+        equipamentos.setAll(repo.listarTodos().stream().filter(this::permitido).sorted(Comparator.comparing(Equipamento::getTipo, String.CASE_INSENSITIVE_ORDER)).toList());
+        if (!admin) cliente.setValue(clienteAtual());
     }
     @FXML private void limpar() {
         tabela.getSelectionModel().clearSelection(); selecionado = null;
-        tipo.clear(); marca.clear(); modelo.clear(); serie.clear(); cliente.setValue(null); tipo.requestFocus();
+        tipo.clear(); marca.clear(); modelo.clear(); serie.clear(); cliente.setValue(clienteAtual()); tipo.requestFocus();
     }
     @FXML private void salvar() {
         String t = tipo.getText().strip(), m = marca.getText().strip(), mo = modelo.getText().strip(), s = serie.getText().strip();
-        Cliente c = cliente.getValue();
+        Cliente c = admin ? cliente.getValue() : clienteAtual();
         if (c == null || t.isEmpty() || t.length()>80 || m.length()>80 || mo.length()>80 || s.length()>100) {
             erro("Selecione um cliente e informe o tipo. Tipo, marca e modelo: até 80 caracteres; série: até 100."); return;
         }
         try {
             Equipamento e = selecionado == null ? new Equipamento(t,m,mo,s,c) : repo.buscarPorId(selecionado).orElseThrow();
+            if (!permitido(e)) throw new IllegalStateException("Acesso negado");
             e.setTipo(t); e.setMarca(m); e.setModelo(mo); e.setNumeroSerie(s); e.setCliente(c); repo.salvar(e);
         } catch (RuntimeException ex) { erro("Não foi possível salvar o equipamento."); return; }
         recarregar("Equipamento salvo com sucesso.");
     }
     @FXML private void excluir() {
-        Equipamento e = tabela.getSelectionModel().getSelectedItem(); if (e == null) return;
+        Equipamento e = tabela.getSelectionModel().getSelectedItem(); if (e == null || !permitido(e)) return;
         if (new Alert(Alert.AlertType.CONFIRMATION, "Excluir este equipamento?", ButtonType.YES, ButtonType.NO).showAndWait().orElse(ButtonType.NO) != ButtonType.YES) return;
         try { if (!repo.excluir(e.getId())) { erro("Equipamento não encontrado."); return; } }
         catch (RuntimeException ex) { erro("Não foi possível excluir. Verifique se existem ordens vinculadas."); return; }
