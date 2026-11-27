@@ -92,6 +92,10 @@ mvn clean test
 
 A comunicação com o banco de dados é feita utilizando JPA e Hibernate. As operações de gravação utilizam transações, com rollback em caso de erro.
 
+## Diagrama de classes
+
+![Diagrama de classes](docs/diagrama-classes.png)
+
 ## Telas do sistema
 
 ### Login
