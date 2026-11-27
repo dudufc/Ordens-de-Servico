@@ -11,7 +11,6 @@ Pequenas assistências técnicas precisam registrar quais equipamentos pertencem
 ## Integrantes
 
 - Eduardo França
-- Se o trabalho for em dupla, adicionar aqui o segundo integrante.
 
 ## Funcionalidades planejadas
 
@@ -74,30 +73,9 @@ O SQLite será criado automaticamente em `dados/cfservice.db` na primeira utiliz
 
 As três entidades estão mapeadas no `persistence.xml`, com relacionamentos `@OneToMany` e `@ManyToOne`. O `JpaRepository` oferece operações básicas de consulta e gravação; escritas usam transações e rollback em caso de erro.
 
-## Plano de desenvolvimento e commits
-
-Datas sugeridas para dividir o trabalho de forma real e progressiva. Cada commit deve representar o que foi feito naquela etapa, sem alterar datas artificialmente.
-
-| Data sugerida | Etapa | Commit sugerido |
-| --- | --- | --- |
-| 23/11 | Estrutura Maven, tela inicial, três entidades, JPA e testes iniciais | `feat: iniciar projeto e modelar entidades JPA` |
-| 24/11 | CRUD completo de clientes | `feat: implementar cadastro de clientes` |
-| 27/11 | CRUD completo de equipamentos e relacionamento | `feat: implementar cadastro de equipamentos` |
-| 30/11 | Fluxo completo de ordens de serviço | `feat: implementar ordens de servico` |
-| 02/12 | Validações, buscas, ObservableList, bindings e Streams | `feat: adicionar filtros e validacoes` |
-| 04/12 | Testes finais, layout, diagrama e prints | `docs: documentar telas e diagrama de classes` |
-| 07/12 | Gravar vídeo, revisar README e publicar | `docs: adicionar apresentacao e instrucoes finais` |
-
-**Prazo do trabalho: 09/12/2026 às 19h.**
 
 ## Diagrama e capturas de tela
 
 Serão incluídos na etapa de documentação em `docs/diagrama-classes.png` e `docs/imagens/`, após os cadastros estarem concluídos.
 
-## Vídeo de apresentação
 
-Link do vídeo no YouTube (não listado): **a adicionar antes da entrega**. Duração máxima de cinco minutos.
-
-## Entrega
-
-No Moodle, enviar somente a URL do repositório GitHub, que deverá estar público ou acessível ao professor.
