@@ -94,7 +94,7 @@ A comunicação com o banco de dados é feita utilizando JPA e Hibernate. As ope
 
 ## Diagrama de classes
 
-![Diagrama de classes](docs/diagrama-classes.png)
+![Diagrama de classes](docs/diagrama-classes)
 
 ## Telas do sistema
 
